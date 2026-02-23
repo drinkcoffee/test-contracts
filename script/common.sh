@@ -16,10 +16,12 @@ if [[ $IMMUTABLE_NETWORK -eq 1 ]]; then
     echo "Immutable zkEVM Mainnet Configuration"
     IMMUTABLE_RPC=https://rpc.immutable.com
     BLOCKSCOUT_URI=https://explorer.immutable.com/api?
+    export NFT_OPERATOR_ALLOWLIST=0x5F5EBa8133f68ea22D712b0926e2803E78D89221
 else
     echo "Immutable zkEVM Testnet Configuration"
     IMMUTABLE_RPC=https://rpc.testnet.immutable.com
     BLOCKSCOUT_URI=https://explorer.testnet.immutable.com/api?
+    export NFT_OPERATOR_ALLOWLIST=0x6b969FD89dE634d8DE3271EbE97734FEFfcd58eE
 fi
 if [ -z "${BLOCKSCOUT_APIKEY}" ]; then
     echo "Error: BLOCKSCOUT_APIKEY environment variable is not set"
@@ -49,6 +51,8 @@ echo " Script: $script"
 if [ -n "${PRIVATE_KEY}" ]; then
     echo " Signing: private key"
     forge script --rpc-url "$IMMUTABLE_RPC" \
+        --optimize \
+        --optimizer-runs 1 \
         --priority-gas-price 10000000000 \
         --with-gas-price 10000000100 \
         -vvv \
