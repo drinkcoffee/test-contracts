@@ -1,19 +1,37 @@
-# Remix compiler artifacts
-**/artifacts/
-**/artifacts/**
-
-# Remix plugin state folders
-deps/
-states/
-
-# Debug info
-*.dbg.json
-*.tsbuildinfo
-
-# Optional
+node_modules
 .env
-.env.local
+coverage
+coverage.json
+typechain
+typechain-types
+node.json
+.idea/
+.vscode/
+package-lock.json
 
+# Hardhat files
+cache
+artifacts
+cache_hardhat
 
-out/**
-cache/**
+# Build files
+dist/
+
+# Forge files
+foundry-out/
+broadcast/
+
+# Apple Mac files
+.DS_Store
+
+# Fuzz
+crytic-export
+echidna-corpus
+medusa-corpus
+med-logs
+slither.json
+slither.sarif
+solc-bin
+
+out/
+
